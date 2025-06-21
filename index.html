@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Quality Predictor - Project Overview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 
+        Chosen Palette: Deep Burgundy & Cream
+        Application Structure Plan: A single-page, scrollable application that mirrors the structure of the original README.md file. The design will enhance readability and engagement through a clear visual hierarchy, icons, and interactive elements like copy-to-clipboard buttons. The sections will be: Hero, Features, How It Works/Tech Stack, Project Structure, Setup Guide, and Footer. This structure was chosen because it's the most intuitive way to present documentation, guiding the user logically through the project's information from a high-level overview to detailed setup instructions.
+        Visualization & Content Choices:
+            - Report Info: Project Title & Description -> Goal: Inform -> Presentation: Hero section with large typography -> Interaction: CTA button with smooth scroll -> Justification: Grabs user attention and provides immediate context.
+            - Report Info: Features List -> Goal: Inform/Organize -> Presentation: Responsive grid of feature cards with Unicode icons -> Interaction: Static -> Justification: Quickly communicates the app's key selling points in a visually scannable format.
+            - Report Info: Tech Stack -> Goal: Inform -> Presentation: Grid of text-based cards -> Interaction: Static -> Justification: Clearly lists the technologies used.
+            - Report Info: Project Structure -> Goal: Organize -> Presentation: Styled nested list emulating a file tree with Unicode icons -> Interaction: Static -> Justification: More visually engaging and easier to parse than a plain text block.
+            - Report Info: Setup Steps -> Goal: Instruct -> Presentation: Numbered list of styled cards with code blocks -> Interaction: Copy-to-clipboard buttons for each code block -> Justification: Improves usability by making it easy for users to copy commands without errors. Library/Method: Vanilla JS.
+            CONFIRMING NO SVG/Mermaid.
+        CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', serif;
+        }
+        .file-tree ul {
+            padding-left: 1.5rem;
+            border-left: 1px dashed #9ca3af;
+        }
+        .file-tree li {
+            position: relative;
+            padding-left: 1rem;
+        }
+        .file-tree li::before {
+            content: '';
+            position: absolute;
+            top: 0.7rem;
+            left: -1.5rem;
+            width: 1.25rem;
+            height: 1px;
+            background-color: #9ca3af;
+            border-style: dashed;
+        }
+        .copy-btn-parent:hover .copy-btn {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-[#fdfbf7] text-[#4a4a4a]">
+
+    <!-- Header & Hero Section -->
+    <header class="bg-[#4a0033] text-white">
+        <div class="container mx-auto px-6 py-20 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">🍷 Wine Quality Predictor</h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                An interactive overview of a Flask web application that predicts the quality of red wine using a machine learning regression model.
+            </p>
+            <a href="#setup" class="bg-white text-[#4a0033] font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-200 transition duration-300">
+                Get Started
+            </a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16">
+
+        <!-- Features Section -->
+        <section id="features" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-[#4a0033] mb-12">Key Features</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                    <div class="text-4xl mb-4">🖥️</div>
+                    <h3 class="text-xl font-bold mb-2">User-friendly Interface</h3>
+                    <p>A simple, clean web form for entering wine properties, making it accessible to all users.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                    <div class="text-4xl mb-4">🤖</div>
+                    <h3 class="text-xl font-bold mb-2">Regression Model</h3>
+                    <p>Predicts a continuous wine quality score (e.g., from 3 to 8) for nuanced evaluation.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                    <div class="text-4xl mb-4">🖱️</div>
+                    <h3 class="text-xl font-bold mb-2">Auto-fill Buttons</h3>
+                    <p>Allows for quick testing with predefined values for low, medium, and high-quality wines.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h3 class="text-xl font-bold mb-2">Responsive Design</h3>
+                    <p>Optimized for various screen sizes, providing a seamless experience on mobile and desktop.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                    <div class="text-4xl mb-4">🏠</div>
+                    <h3 class="text-xl font-bold mb-2">Landing Page</h3>
+                    <p>An attractive, professional introduction page to welcome users to the application.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works & Tech Stack -->
+        <section id="tech" class="mb-24">
+             <h2 class="text-3xl md:text-4xl font-bold text-center text-[#4a0033] mb-12">How It Works & Technology</h2>
+             <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                    <h3 class="text-2xl font-bold mb-4">The Machine Learning Core</h3>
+                    <p class="mb-4">The application uses a <strong class="text-[#4a0033]">RandomForestRegressor</strong> model, a powerful ensemble learning method, which was trained on the renowned <a href="https://archive.ics.uci.edu/dataset/186/wine+quality" target="_blank" class="text-blue-600 hover:underline">Wine Quality Red dataset</a> from the UCI Machine Learning Repository.</p>
+                    <p>To ensure prediction accuracy, all input features are scaled using a <strong class="text-[#4a0033]">StandardScaler</strong> before being fed into the model. This process standardizes the features to have a mean of 0 and a standard deviation of 1, preventing features with larger scales from dominating the model's learning process.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                    <h3 class="text-2xl font-bold mb-4">Technology Stack</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="font-semibold p-3 bg-gray-100 rounded">Python</div>
+                        <div class="font-semibold p-3 bg-gray-100 rounded">Flask</div>
+                        <div class="font-semibold p-3 bg-gray-100 rounded">Scikit-learn</div>
+                        <div class="font-semibold p-3 bg-gray-100 rounded">NumPy</div>
+                        <div class="font-semibold p-3 bg-gray-100 rounded">Pandas</div>
+                        <div class="font-semibold p-3 bg-gray-100 rounded">HTML/CSS/JS</div>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- Project Structure -->
+        <section id="structure" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-[#4a0033] mb-12">Project Structure</h2>
+            <div class="bg-gray-800 text-white p-6 rounded-lg shadow-lg font-mono text-sm max-w-4xl mx-auto">
+                <div class="file-tree">
+                    <ul>
+                        <li>📁 your_project_folder/</li>
+                        <li>
+                            <ul>
+                                <li>📄 app.py <span class="text-gray-400"># Main Flask application</span></li>
+                                <li>📄 train_model.py <span class="text-gray-400"># Script to train and save the model</span></li>
+                                <li>📄 winequality-red (1).csv <span class="text-gray-400"># Dataset for training</span></li>
+                                <li>📄 requirements.txt <span class="text-gray-400"># Python dependencies</span></li>
+                                <li>📄 .gitignore <span class="text-gray-400"># Specifies files to ignore</span></li>
+                                <li>
+                                    📁 templates/
+                                    <ul>
+                                        <li>📄 index.html <span class="text-gray-400"># The prediction form</span></li>
+                                        <li>📄 index_landing.html <span class="text-gray-400"># The landing page</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    📁 static/
+                                    <ul>
+                                        <li>📄 style.css <span class="text-gray-400"># Custom CSS</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <p class="mt-6 text-gray-400 italic text-center">Note: `scaler.pkl` and `wine_model_regression.pkl` are generated by `train_model.py` and are intentionally excluded from version control.</p>
+            </div>
+        </section>
+
+        <!-- Setup Guide Section -->
+        <section id="setup" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-[#4a0033] mb-12">Setup & Installation Guide</h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!-- Step 1 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 bg-[#4a0033] text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-6">1</div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Clone the Repository</h3>
+                        <p class="mb-3">Get the project files on your local machine.</p>
+                        <div class="bg-gray-800 text-white p-4 rounded-md relative copy-btn-parent">
+                            <pre><code class="language-bash" id="code1">git clone https://github.com/AliGohar2151/Wine_Prediction_System.git
+cd Wine_Prediction_System</code></pre>
+                            <button onclick="copyToClipboard('code1')" class="copy-btn absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white text-xs font-bold py-1 px-2 rounded opacity-0 transition-opacity duration-300">Copy</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 bg-[#4a0033] text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-6">2</div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Create & Activate Virtual Environment</h3>
+                        <p class="mb-3">Isolate project dependencies. Run the command for your OS.</p>
+                        <div class="bg-gray-800 text-white p-4 rounded-md relative copy-btn-parent">
+                            <p class="text-gray-400 text-sm mb-2"># Windows</p>
+                            <pre><code class="language-bash" id="code2">python -m venv venv
+.\\venv\\Scripts\\activate</code></pre>
+                            <button onclick="copyToClipboard('code2')" class="copy-btn absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white text-xs font-bold py-1 px-2 rounded opacity-0 transition-opacity duration-300">Copy</button>
+                        </div>
+                         <div class="bg-gray-800 text-white mt-3 p-4 rounded-md relative copy-btn-parent">
+                            <p class="text-gray-400 text-sm mb-2"># macOS/Linux</p>
+                            <pre><code class="language-bash" id="code3">python -m venv venv
+source venv/bin/activate</code></pre>
+                            <button onclick="copyToClipboard('code3')" class="copy-btn absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white text-xs font-bold py-1 px-2 rounded opacity-0 transition-opacity duration-300">Copy</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 bg-[#4a0033] text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-6">3</div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Install Dependencies</h3>
+                        <p class="mb-3">Install all required Python libraries from `requirements.txt`.</p>
+                        <div class="bg-gray-800 text-white p-4 rounded-md relative copy-btn-parent">
+                            <pre><code class="language-bash" id="code4">pip install -r requirements.txt</code></pre>
+                            <button onclick="copyToClipboard('code4')" class="copy-btn absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white text-xs font-bold py-1 px-2 rounded opacity-0 transition-opacity duration-300">Copy</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 bg-[#4a0033] text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-6">4</div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Generate Model Files</h3>
+                        <p class="mb-3">Run the training script to create `scaler.pkl` and `wine_model_regression.pkl`.</p>
+                        <div class="bg-gray-800 text-white p-4 rounded-md relative copy-btn-parent">
+                            <pre><code class="language-bash" id="code5">python train_model.py</code></pre>
+                            <button onclick="copyToClipboard('code5')" class="copy-btn absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white text-xs font-bold py-1 px-2 rounded opacity-0 transition-opacity duration-300">Copy</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 5 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 bg-[#4a0033] text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-6">5</div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Run the Flask App</h3>
+                        <p class="mb-3">Start the local development server.</p>
+                        <div class="bg-gray-800 text-white p-4 rounded-md relative copy-btn-parent">
+                            <pre><code class="language-bash" id="code6">python app.py</code></pre>
+                            <button onclick="copyToClipboard('code6')" class="copy-btn absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white text-xs font-bold py-1 px-2 rounded opacity-0 transition-opacity duration-300">Copy</button>
+                        </div>
+                        <p class="mt-4">Access the application in your browser at <a href="http://127.0.0.1:5000/" target="_blank" class="text-blue-600 hover:underline">http://127.0.0.1:5000/</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#2c001e] text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-2xl font-bold mb-4">Contributing & License</h3>
+            <p class="max-w-2xl mx-auto mb-2">Feel free to fork the repository, open issues, or submit pull requests. This project is licensed under the MIT License.</p>
+            <a href="https://github.com/AliGohar2151/Wine_Prediction_System" target="_blank" class="text-blue-400 hover:underline">View on GitHub</a>
+        </div>
+    </footer>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const codeEl = document.getElementById(elementId);
+            const text = codeEl.innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                alert('Copied to clipboard!');
+            } catch (err) {
+                alert('Failed to copy text.');
+            }
+            document.body.removeChild(textarea);
+        }
+    </script>
+</body>
+</html>
